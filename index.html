@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elder Futhark Runes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        #runesText {
+            font-size: 36px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="runesText">ᚠᚢᚦᚬᚱᚴ</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const runesText = document.getElementById("runesText");
+
+            setTimeout(() => {
+                runesText.style.opacity = 1;
+            }, 500);
+
+            setInterval(() => {
+                runesText.style.opacity = 0;
+                setTimeout(() => {
+                    runesText.innerText = generateRandomRunes();
+                    runesText.style.opacity = 1;
+                }, 1000);
+            }, 3000);
+
+            function generateRandomRunes() {
+                const allRunes = ["ᚠ", "ᚢ", "ᚦ", "ᚬ", "ᚱ", "ᚴ", "ᚼ", "ᛁ", "ᛅ", "ᛋ", "ᛏ", "ᛒ", "ᛘ", "ᛚ"];
+                return allRunes[Math.floor(Math.random() * allRunes.length)];
+            }
+        });
+    </script>
+</body>
+</html>
