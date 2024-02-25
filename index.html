@@ -7,170 +7,45 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #222;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        nav {
             display: flex;
             justify-content: center;
-            background-color: #333;
-            padding: 0.5rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-size: 1.2rem;
-        }
-
-        nav a.active {
-            font-weight: bold;
-        }
-
-        section {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        #introduction {
-            background-color: #fff;
-        }
-
-        #runes {
-            background-color: #eee;
-        }
-
-        #interpretation {
-            background-color: #fafafa;
-        }
-
-        #history {
-            background-color: #f5f5f5;
-        }
-
-        #story {
-            background-color: #f0f0f0;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
         }
 
         #runesText {
-            font-size: 48px;
+            font-size: 36px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Elder Futhark Runes</h1>
-    </header>
-
-    <nav>
-        <a href="#introduction" class="active">Introduction</a>
-        <a href="#runes">Runes</a>
-        <a href="#interpretation">Interpretation</a>
-        <a href="#history">History</a>
-        <a href="#story">Story</a>
-        <!-- Add more links for additional sections if needed -->
-    </nav>
-
-    <section id="introduction" class="tab-content active">
-        <h2>Welcome to the World of Elder Futhark Runes</h2>
-        <p>Elder Futhark is an ancient runic alphabet used by Germanic tribes for writing and divination. Each rune has its own unique meaning and significance. Explore the mystical world of Elder Futhark runes and their ancient wisdom.</p>
-    </section>
-
-    <section id="runes" class="tab-content">
-        <h2>Discover the Runes</h2>
-        <div id="runesText">ᚠᚢᚦᚬᚱᚴ</div>
-    </section>
-
-    <section id="interpretation" class="tab-content">
-        <h2>Interpretation of Runes</h2>
-        <p>Understanding the meaning and interpretation of each rune is essential for unlocking their hidden messages. Dive into the interpretations and discover the spiritual guidance they offer.</p>
-    </section>
-
-    <section id="history" class="tab-content">
-        <h2>History of Elder Futhark</h2>
-        <p>Explore the historical background of Elder Futhark, its origins, and how it was used by ancient Germanic cultures. Uncover the rich history and cultural significance of these ancient symbols.</p>
-    </section>
-
-    <section id="story" class="tab-content">
-        <h2>Viking Saga Poetry</h2>
-        <p>In the ancient Norse tongue, a Viking saga unfolds...</p>
-        <p>Heimdallr, the guardian of Bifröst, sounded the Gjallarhorn, signaling the coming of Ragnarök. Amidst the chaos, brave warriors sought the guidance of Elder Futhark runes, engraved with the wisdom of the gods.</p>
-        <p>Odin, the Allfather, gazed upon Yggdrasil, the World Tree, as the Norns weaved the destiny of mortals. The runes whispered tales of valor, betrayal, and the eternal struggle between light and darkness.</p>
-        <p>Let the runes guide you through the tapestry of time, and may the spirit of the Vikings live on in these ancient symbols.</p>
-    </section>
+    <div id="runesText">ᚠᚢᚦᚬᚱᚴ</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const runesText = document.getElementById("runesText");
 
-            function fadeInRunes() {
+            setTimeout(() => {
                 runesText.style.opacity = 1;
-            }
+            }, 500);
 
-            function fadeOutRunes() {
+            setInterval(() => {
                 runesText.style.opacity = 0;
-            }
-
-            function updateRunes() {
-                runesText.innerText = generateRandomRunes();
-            }
+                setTimeout(() => {
+                    runesText.innerText = generateRandomRunes();
+                    runesText.style.opacity = 1;
+                }, 1000);
+            }, 3000);
 
             function generateRandomRunes() {
                 const allRunes = ["ᚠ", "ᚢ", "ᚦ", "ᚬ", "ᚱ", "ᚴ", "ᚼ", "ᛁ", "ᛅ", "ᛋ", "ᛏ", "ᛒ", "ᛘ", "ᛚ"];
                 return allRunes[Math.floor(Math.random() * allRunes.length)];
             }
-
-            fadeInRunes();
-
-            setInterval(() => {
-                fadeOutRunes();
-                setTimeout(() => {
-                    updateRunes();
-                    fadeInRunes();
-                }, 1000);
-            }, 3000);
-
-            // Add event listeners for tab navigation
-            const tabs = document.querySelectorAll('nav a');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach((tab, index) => {
-                tab.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    tabs.forEach((t) => t.classList.remove('active'));
-                    tab.classList.add('active');
-
-                    tabContents.forEach((content) => {
-                        content.classList.remove('active');
-                    });
-
-                    tabContents[index].classList.add('active');
-                });
-            });
         });
     </script>
 </body>
 </html>
-
